@@ -1,2 +1,2 @@
 # CienSV
-A Wrapper for the java UDP socket
+A Wrapper for the java TCP socket
