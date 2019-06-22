@@ -1,2 +1,2 @@
 # CienSV
-A Wrapper for the java TCP socket
+A Wrapper for the java socket
