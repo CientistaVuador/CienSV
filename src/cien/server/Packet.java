@@ -34,9 +34,7 @@ public class Packet {
                 ByteBuffer.allocate(4).putInt(id.length).array(),
                 bytes
         );
-        if (Logger.canLog()) {
-            Logger.log("Packet \""+Util.convertIDToString(id)+"\" Created, "+allBytes.length+" Bytes");
-        }
+        Logger.log("Packet \""+Util.convertIDToString(id)+"\" Created, "+allBytes.length+" Bytes");
     }
 
     /**
