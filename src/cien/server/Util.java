@@ -1,5 +1,11 @@
 package cien.server;
 public class Util {
+
+    /**
+     * Mix byte arrays into one
+     * @param arr
+     * @return
+     */
     public static byte[] mixByteArrays(final byte[]... arr) {
         int allBytes = 0;
         for (byte[] a:arr) {
