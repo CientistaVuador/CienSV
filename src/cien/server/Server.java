@@ -18,9 +18,7 @@ public class Server extends Thread {
     public Server(ServerSocket sv) {
         super(sv.toString());
         this.sv = sv;
-        if (Logger.canLog()) {
-            Logger.log(sv+" Created!");
-        }
+        Logger.log(sv+" Created!");
     }
 
     /**
@@ -37,9 +35,7 @@ public class Server extends Thread {
     @Override
     public synchronized void start() {
         super.start();
-        if (Logger.canLog()) {
-            Logger.log(sv+" Started!");
-        }
+        Logger.log(sv+" Started!");
     }
     
     @Override
@@ -47,9 +43,7 @@ public class Server extends Thread {
         try {
             Socket socket;
             while ((socket = sv.accept()) != null) {
-                if (Logger.canLog()) {
-                    Logger.log(sv+" Client Connected! -> "+socket);
-                }
+                Logger.log(sv+" Client Connected! -> "+socket);
                 ServerClient client = new ServerClient(socket) {
                     @Override
                     public void onPacketReceived(Packet p) {
@@ -57,9 +51,7 @@ public class Server extends Thread {
                     }
                 };
                 client.start();
-                if (Logger.canLog()) {
-                    Logger.log(sv+" Waiting for clients...");
-                }
+                Logger.log(sv+" Waiting for clients...");
             }
         } catch (IOException ex) {
             //Todo
