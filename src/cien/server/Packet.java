@@ -29,12 +29,11 @@ public class Packet {
         this.id = id;
         this.bytes = bytes;
         this.allBytes = Util.mixByteArrays(
-                ByteBuffer.allocate(2).putShort((short) bytes.length).array(),
+                ByteBuffer.allocate(2).putShort((short) id.length).array(),
                 id,
-                ByteBuffer.allocate(4).putInt(id.length).array(),
+                ByteBuffer.allocate(4).putInt(bytes.length).array(),
                 bytes
         );
-        Logger.log("Packet \""+Util.convertIDToString(id)+"\" Created, "+allBytes.length+" Bytes");
     }
 
     /**

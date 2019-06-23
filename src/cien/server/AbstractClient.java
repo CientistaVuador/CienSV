@@ -3,6 +3,8 @@ package cien.server;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
@@ -10,8 +12,8 @@ import java.util.HashMap;
 public abstract class AbstractClient extends Thread {
 
     private final Socket s;
-    private final BufferedInputStream in;
-    private final BufferedOutputStream out;
+    private final InputStream in;
+    private final OutputStream out;
     private final HashMap<String, Object> map = new HashMap<>();
     
     /**
@@ -82,6 +84,7 @@ public abstract class AbstractClient extends Thread {
                     bytesSize[i] = (byte) in.read();
                 }
                 int bytesLen = ByteBuffer.wrap(bytesSize).getInt();
+                
                 
                 //If Packet is Empty
                 if (bytesLen<=0) {
