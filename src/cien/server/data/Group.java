@@ -130,10 +130,14 @@ public class Group extends Element {
                     add(g);
                     break;
                 case Types.BYTES_FIELD:
-                    BytesField h = new BytesField(null);
+                    BytesField h = new BytesField();
                     h.loadFromByteArray(allbytes);
                     add(h);
                     break;
+                case Types.LIST_FIELD:
+                    ListField l = new ListField();
+                    l.loadFromByteArray(allbytes);
+                    add(l);
             }
         }
     }

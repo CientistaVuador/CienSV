@@ -20,14 +20,6 @@ public class Util {
         return b.toString();
     }
     
-    public static Group createList(String name, String... values) {
-        Group g = new Group(name);
-        for (int i = 0; i < values.length; i++) {
-            g.add(new Field(Integer.toString(i), values[i]));
-        }
-        return g;
-    }
-    
     public static BytesField bytesFieldfromFile(File f) throws FileNotFoundException, IOException {
         if (f.isFile()) {
             BytesField g = new BytesField(f.getName());

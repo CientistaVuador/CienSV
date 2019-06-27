@@ -5,6 +5,7 @@ import cien.server.data.BytesField;
 import cien.server.data.Element;
 import cien.server.data.Field;
 import cien.server.data.Group;
+import cien.server.data.ListField;
 import cien.server.data.Util;
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +13,14 @@ import java.io.IOException;
 public class TestData {
 
     public static void main(String[] args) throws Exception {
+        long here = System.nanoTime()/1000000;
         
+        
+        testAll();
+        
+        
+        float o = (System.nanoTime()/1000000)-here;
+        System.out.println(o+" ms");
     }
     
     public static void testFields() {
@@ -75,15 +83,18 @@ public class TestData {
         }
     }
     
+    
     public static void testAll() {
         byte[] testBytes = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
         
         Group group = new Group("Group")
                 .add(new Field("MyField", "Value"))
                 .add(new BytesField("BytesField", testBytes))
+                .add(new ListField("MyList", "A", "B", "C"))
                 .add(new Group("SubGroup")
                         .add(new Field("MyField", "Value"))
                         .add(new BytesField("BytesField", testBytes))
+                        .add(new ListField("MyList", "A", "B", "C"))
                 );
         
         System.out.println(group);
@@ -94,6 +105,23 @@ public class TestData {
         copy.loadFromByteArray(bytes);
         
         System.out.println(copy);
+    }
+    
+    public static void testListField() {
+        ListField myList = new ListField("MyList", 
+                "A",
+                "B",
+                "C"
+        );
+        
+        byte[] myListBytes = myList.toByteArray();
+        
+        System.out.println(myList);
+        
+        ListField myCopy = new ListField(null);
+        myCopy.loadFromByteArray(myListBytes);
+        
+        System.out.println(myCopy);
     }
     
     public static void testGroupsAndPackets() {
@@ -114,5 +142,6 @@ public class TestData {
         
         System.out.println(t);
     }
+    
     
 }
